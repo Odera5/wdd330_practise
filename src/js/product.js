@@ -1,5 +1,6 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
+import { getProjectDetail } from "./project-detail.js";
 
 const dataSource = new ProductData("tents");
 
@@ -18,3 +19,11 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
+// const productItem = document.querySelectorAll(".product-card >a");
+// productItem.forEach((item) => {
+//   item.addEventListener("click", (e) => {
+//     getProjectDetail();
+//   });
+// });
+getProjectDetail();
