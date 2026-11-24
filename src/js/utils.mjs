@@ -25,3 +25,7 @@ export function getProductId(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
 }
+export function renderListWithTemplate(data, template, listElement) {
+  const htmlString = data.map(template).join("");
+  listElement.innerHTML = htmlString;
+}
