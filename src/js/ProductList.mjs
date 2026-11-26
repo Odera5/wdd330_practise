@@ -18,7 +18,7 @@ export class ProductList {
 function templateHTML(data) {
   return `
   <li class="product-card">
-            <a href="./product_pages/product-detail.html?id=${data.Id}">
+            <a href="../product_pages/product-detail.html?id=${data.Id}">
               <img
                 src="${data.Image}"
                 alt="Marmot Ajax tent"
