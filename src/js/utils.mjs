@@ -29,3 +29,19 @@ export function renderListWithTemplate(data, template, listElement) {
   const htmlString = data.map(template).join("");
   listElement.innerHTML = htmlString;
 }
+export function renderWithTemplate(template, listElement) {
+  listElement.innerHTML = template;
+}
+async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const headerElement = document.querySelector("#header");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const footerElement = document.querySelector("#footer");
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+}
