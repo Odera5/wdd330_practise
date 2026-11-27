@@ -2,10 +2,13 @@ import { getProductId } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./product-detail.mjs";
 
-const dataSource = new ProductData("tents");
-const productID = getProductId("id");
+const queryParams = window.location.search;
+const params = new URLSearchParams(queryParams);
+const id = params.get("id");
 
-const product = new ProductDetails(productID, dataSource);
+const dataSource = new ProductData();
+
+const product = new ProductDetails(id);
 product.init();
 
 // add listener to Add to Cart button

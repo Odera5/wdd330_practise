@@ -4,16 +4,20 @@ import {
   loadHeaderFooter,
 } from "./utils.mjs";
 
+const baseURL = import.meta.env.VITE_SERVER_URL;
+
 export default class ProductDetails {
-  constructor(productId, dataSource) {
+  constructor(productId) {
     this.productId = productId;
     this.product = {};
-    this.dataSource = dataSource;
   }
 
   async init() {
     // use the datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
-    this.product = await this.dataSource.findProductById(this.productId);
+    const product = await fetch(`${baseURL}product/${this.productId}`);
+    const res = await product.json();
+    this.product = res.Result;
+    console.log(this.product);
     // the product details are needed before rendering the HTML
     this.renderProductDetails();
     // once the HTML is rendered, add a listener to the Add to Cart button
@@ -48,7 +52,7 @@ function productDetailsTemplate(product) {
   ] = clone.querySelectorAll("h3,h2,img,p,p,p");
   brand_name.textContent = product.Brand.Name;
   product_name.textContent = product.Name;
-  product_img.src = product.Image;
+  product_img.src = product.Images.PrimaryLarge;
   product_card__price.textContent = `$${product.ListPrice}`;
   product__color.textContent = product.Colors[0].ColorName;
   product__description.innerHTML = product.DescriptionHtmlSimple;

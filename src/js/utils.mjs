@@ -26,6 +26,7 @@ export function getProductId(param) {
   return urlParams.get(param);
 }
 export function renderListWithTemplate(data, template, listElement) {
+  console.log("Data from util render:", data);
   const htmlString = data.map(template).join("");
   listElement.innerHTML = htmlString;
 }
