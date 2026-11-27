@@ -24,6 +24,9 @@ body {
   font-family: var(--font-body);
   font-size: var(--font-base);
   color: var(--dark-grey);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 img {
@@ -257,7 +260,28 @@ button {
   }
 }
 
+main {
+  flex: 1;
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
+  margin-top: 1rem;
+}
+
+.category-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+  img {
+    height: 6.25rem;
+    width: 6.25rem;
+  }
+}
+.product h2 {
+  padding: 2rem;
+}
+section {
+  margin-bottom: 1.5rem;
 }
